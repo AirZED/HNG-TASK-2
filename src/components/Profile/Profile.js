@@ -2,7 +2,7 @@
 import classes from "./Profile.module.css";
 
 //imported Asset
-import ProfileImage from "../assets/profileImage.jpg";
+import ProfileImage from "../../assets/profileImage.jpg";
 
 const Profile = (props) => {
   return (
