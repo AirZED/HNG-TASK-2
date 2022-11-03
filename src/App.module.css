@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.App {
+  min-block-size: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.App main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 1.5em;
+  font-weight: 600;
+  /* outline: 2px solid black; */
+  inline-size: 76em;
+}
+
+
+@media(max-width:1500px) {
+  .App main {
+    inline-size: 100%;
+    padding: 0 10em;
+  }
+}
+
+@media (max-width:1000px) {
+  .App main {
+    padding: 0 5em;
+  }
+}
+
+@media (max-width:768px) {
+  .App main {
+    padding: 0 1.2em;
+  }
+}

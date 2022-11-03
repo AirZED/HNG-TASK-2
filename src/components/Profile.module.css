@@ -1,0 +1,44 @@
+.header {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 4em 0em 3.5em 0em;
+}
+
+#slack {
+    display: none;
+}
+
+.more {
+    display: none;
+}
+
+.header img {
+    inline-size: 5.5em;
+    block-size: 5.5em;
+    border-radius: 50%;
+}
+
+.header h2 {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #101828;
+}
+
+@media(max-width:768px) {
+    .header {
+        width: 90%;
+        position: relative;
+
+    }
+
+    .more {
+        display: block;
+        position: absolute;
+        top: -20px;
+        right: 0;
+    }
+}

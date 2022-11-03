@@ -1,0 +1,23 @@
+.link {
+    block-size: 76px;
+    border-radius: 8px;
+    inline-size: 100%;
+    padding: 24px 32px;
+    background-color: #eaecf0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.link:hover {
+    background-color: #d0d5d0;
+    cursor: pointer;
+}
+
+@media (max-width:768px) {
+    .link {
+        font-size: 14px;
+    }
+}
