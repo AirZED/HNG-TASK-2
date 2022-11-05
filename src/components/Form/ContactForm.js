@@ -8,6 +8,9 @@ import TextArea from "../UI/TextArea";
 
 //importing hooks
 import useValidation from "../../hooks/useValidation";
+import { useRef } from "react";
+
+const myName = "Mfoniso";
 
 const ContactForm = (props) => {
   //custom hooks
@@ -43,9 +46,10 @@ const ContactForm = (props) => {
     onClearField: clearMessageField,
   } = useValidation((val) => val !== "");
 
-  //internal states
+  //internal states and refs
   const [confirm, setConfirm] = useState(false);
   const [submittedForm, setSubmitForm] = useState(false);
+  const checkBoxRef = useRef();
 
   const confirmInputHandler = (event) => {
     setConfirm((state) => !state);
@@ -64,7 +68,7 @@ const ContactForm = (props) => {
       return;
     }
     const userInformation = { firstName, lastName, email, message };
-
+    checkBoxRef.current.click();
     console.log(userInformation);
 
     //submission text
@@ -135,10 +139,12 @@ const ContactForm = (props) => {
       />
 
       <div className={classes["confirm-submit"]}>
-        <input type={"checkbox"} onChange={confirmInputHandler} />
-        <p>
-          You agree to providing your data to {firstName} who may contact you
-        </p>
+        <input
+          type={"checkbox"}
+          onChange={confirmInputHandler}
+          ref={checkBoxRef}
+        />
+        <p>You agree to providing your data to {myName} who may contact you</p>
       </div>
       <button id="btn__submit" type="submit" disabled={!formIsValid && true}>
         Send Message
