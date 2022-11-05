@@ -117,8 +117,16 @@
 }
 
 .form textarea.error,
-.form input.error {
+.form input.error,
+.form input:active.error,
+.form input:hover.error,
+.form input:active.error,
+.form input:focus.error,
+.from textarea:focus.error,
+.form textarea:active.error,
+.form textarea:hover.error {
     border: 1px solid #e62e2d;
+    outline: none;
 }
 
 .error-message {
@@ -168,8 +176,5 @@
         height: 1.4em;
         width: 1.4em;
     }
-
-
-
 
 }
