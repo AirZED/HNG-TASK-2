@@ -15,12 +15,18 @@ const useValidation = (validateFn) => {
   const onBlurHandler = () => {
     setIsTouched(true);
   };
+
+  const onClearField = () => {
+    setEnteredValue("");
+    setIsTouched(false);
+  };
   return {
     changeValueHandler,
     onBlurHandler,
     itemHasError,
     enteredValue,
     isTouched,
+    onClearField,
   };
 };
 

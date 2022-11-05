@@ -8,7 +8,6 @@ import TextArea from "../UI/TextArea";
 
 //importing hooks
 import useValidation from "../../hooks/useValidation";
-import { useDebugValue } from "react";
 
 const ContactForm = (props) => {
   //custom hooks
@@ -17,6 +16,7 @@ const ContactForm = (props) => {
     onBlurHandler: firstNameOnBlurHandler,
     itemHasError: firstNameHasError,
     enteredValue: firstName,
+    onClearField: clearFirstNameField,
   } = useValidation((val) => val !== "");
 
   const {
@@ -24,6 +24,7 @@ const ContactForm = (props) => {
     onBlurHandler: lastNameOnBlurHandler,
     itemHasError: lastNameHasError,
     enteredValue: lastName,
+    onClearField: clearLastNameField,
   } = useValidation((val) => val !== "");
 
   const {
@@ -31,6 +32,7 @@ const ContactForm = (props) => {
     onBlurHandler: emailOnBlurHandler,
     itemHasError: emailHasError,
     enteredValue: email,
+    onClearField: clearEmailField,
   } = useValidation((val) => val.includes(".") && val.includes("@"));
 
   const {
@@ -38,10 +40,12 @@ const ContactForm = (props) => {
     onBlurHandler: messageOnBlurHandler,
     itemHasError: messageHasError,
     enteredValue: message,
+    onClearField: clearMessageField,
   } = useValidation((val) => val !== "");
 
   //internal states
   const [confirm, setConfirm] = useState(false);
+  const [submittedForm, setSubmitForm] = useState(false);
 
   const confirmInputHandler = (event) => {
     setConfirm((state) => !state);
@@ -62,6 +66,15 @@ const ContactForm = (props) => {
     const userInformation = { firstName, lastName, email, message };
 
     console.log(userInformation);
+
+    //submission text
+    setSubmitForm(true);
+    setConfirm(false);
+
+    clearEmailField();
+    clearFirstNameField();
+    clearMessageField();
+    clearLastNameField();
   };
 
   return (
@@ -79,6 +92,7 @@ const ContactForm = (props) => {
           updateInput={firstNameChangeHandler}
           updateBlur={firstNameOnBlurHandler}
           inputHasError={firstNameHasError}
+          enteredValue={firstName}
         />
         <Input
           type="text"
@@ -90,6 +104,7 @@ const ContactForm = (props) => {
           updateInput={lastNameChangeHandler}
           updateBlur={lastNameOnBlurHandler}
           inputHasError={lastNameHasError}
+          enteredValue={lastName}
         />
       </div>
       <Input
@@ -103,6 +118,7 @@ const ContactForm = (props) => {
         updateInput={emailChangeHandler}
         updateBlur={emailOnBlurHandler}
         inputHasError={emailHasError}
+        enteredValue={email}
       />
       <TextArea
         className={classes["message-box"]}
@@ -115,6 +131,7 @@ const ContactForm = (props) => {
         updateInput={messageChangeHandler}
         updateBlur={messageOnBlurHandler}
         inputHasError={messageHasError}
+        enteredValue={message}
       />
 
       <div className={classes["confirm-submit"]}>
@@ -126,6 +143,10 @@ const ContactForm = (props) => {
       <button id="btn__submit" type="submit" disabled={!formIsValid && true}>
         Send Message
       </button>
+
+      {submittedForm && (
+        <p className={classes.submitted}>Submitted Successfully</p>
+      )}
     </form>
   );
 };

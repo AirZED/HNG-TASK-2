@@ -137,6 +137,14 @@
     color: #e62e2d;
 }
 
+.form .submitted {
+    color: #52ad2c;
+     font-size: 1em;
+     font-weight: 400;
+     margin: 1em;
+     text-align: center;
+}
+
 
 @media (max-width:768px) {
 
