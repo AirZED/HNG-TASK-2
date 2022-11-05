@@ -146,7 +146,12 @@ const ContactForm = (props) => {
         />
         <p>You agree to providing your data to {myName} who may contact you</p>
       </div>
-      <button id="btn__submit" type="submit" disabled={!formIsValid && true}>
+      <button
+        id="btn__submit"
+        type="submit"
+        disabled={!formIsValid && true}
+        title={!formIsValid ? "Check empty field(s)" : "Submit"}
+      >
         Send Message
       </button>
 
